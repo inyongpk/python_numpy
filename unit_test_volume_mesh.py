@@ -18,13 +18,21 @@ def get_volume_mesh(mesh):
     return volume
 
 # Main 
-mesh = np.load('unit_cube_qppp.npy')
-print 'Shape:  ', mesh.shape
-print 'Size:   ', mesh.size
-volume = get_volume_mesh(mesh)
-# error tolerance is 0.00000000001
-if (volume - 1.0 < 0.00000000001):
-   print 'get_volume_mesh works correctly.'
-else:
-   print 'get_volume_mesh does not work correctly.'
+# Error tolerance, 1e-10 is chosen for a unit test.
+error_tolerance = 0.0000000001
+print 'Error tolerance: ', error_tolerance
+
+test_array_meshes = [['unit_cube_qppp.npy', 1.0], ['shell.npy', 3.6586764273115655], ['Robot_Maker_Faire_65pc.npy', 43677.42582662092]]
+
+for array_mesh in test_array_meshes:
+    mesh = np.load(array_mesh[0])
+    print 'Shape:  ', mesh.shape
+    print 'Size:   ', mesh.size
+    volume = get_volume_mesh(mesh)
+    print 'Target volume:       %.16f' %array_mesh[1]
+    print 'Calculated volume:   %.16f' %volume
+    if (abs(volume - array_mesh[1]) < error_tolerance):
+       print 'get_volume_mesh works correctly with %s.' %array_mesh[0]
+    else:
+       print 'get_volume_mesh does not work correctly with %s.' %array_mesh[0]
 
