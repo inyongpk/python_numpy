@@ -10,8 +10,8 @@
 	unit_cube_qppp.npy has a mesh whose volume is a unit cube, 1.0.
 
 3. get_volume_mesh(mesh)
-   It returns volume of an array of triangular facets, mesh that is an argument.
-   It sums volume of tetrahedrons that consist of origin (0,0,0) and a triangular facet in mesh.
+	It returns volume of an array of triangular facets, mesh that is an argument.
+	It sums volume of tetrahedrons that consist of origin (0,0,0) and a triangular facet in mesh.
 
 4. Reference
 	[1] "Efficient feature extraction for 2D/3D objects in mesh representation", 
